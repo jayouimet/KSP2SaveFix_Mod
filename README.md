@@ -6,7 +6,7 @@ If no command modules are found (should not happen), it sets control ownership t
 
 ## For SpaceWarp 0.4.0
 Thank you to ultimaxx9 for the conversion!
-Download and extract the zipped file in releases (release 0.1.0) and place the "KSP2SaveFix" folder into the BepInEx -> plugins folder.
+Download and extract the zipped file in releases (release 1.0.1) and place the "KSP2SaveFix" folder into the BepInEx -> plugins folder.
 
 ## For SpaceWarp 0.3.0
 Download and extract the zipped file in releases (pre-release 0.0.1) and place the "KSP2SaveFix" folder into the "Mods" folder of the SpaceWarp mod loader.
