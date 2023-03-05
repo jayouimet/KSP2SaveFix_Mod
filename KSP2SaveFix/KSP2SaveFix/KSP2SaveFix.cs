@@ -37,46 +37,9 @@ namespace KSP2SaveFix
             }
             Instance = this;
             frameCounter = 0;
-
-            // Example of using the asset loader, were going to load the SpaceWarp GUI skin.
-            // [FORMAT]: space_warp/[assetbundle_name]/[folder_in_assetbundle]/[file.type]
-            GUI.skin = Skins.ConsoleSkin;
-
-            // Register the mod's button on the SpaceWarp application bar.
         }
 
-        private void ToggleButton(bool toggle)
-        {
-            drawUI = toggle;
-        }
-
-        public void OnGUI()
-        {
-            // Set the GUI skin to the SpaceWarp GUI skin.
-            GUI.skin = Skins.ConsoleSkin;
-
-            if (drawUI)
-            {
-                windowRect = GUILayout.Window(
-                    GUIUtility.GetControlID(FocusType.Passive),
-                    windowRect,
-                    FillWindow, // The method we call. 
-                    "KSP2SaveFix",
-                    GUILayout.Height(350),
-                    GUILayout.Width(350)
-                );
-            }
-        }
-
-        public override void OnPostInitialized()
-        {
-            loaded = true;
-        }
-        private static void FillWindow(int windowID)
-        {
-            GUILayout.Label("KSP2SaveFix - Built with Space-Warp");
-            GUI.DragWindow(new Rect(0, 0, 10000, 500));
-        }
+        public override void OnPostInitialized() { loaded = true; }
 
         private void LateUpdate()
         {
