@@ -34,7 +34,10 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\external_dlls\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <PackageReference Include="BepInEx" Version="5.4.21" Publicize="true" />
+    <Reference Include="BepInEx, Version=5.4.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\external_dlls\BepInEx.dll</HintPath>
+    </Reference>
     <Reference Include="SpaceWarp">
       <HintPath>..\external_dlls\SpaceWarp.dll</HintPath>
     </Reference>
