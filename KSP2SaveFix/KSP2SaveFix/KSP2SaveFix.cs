@@ -39,7 +39,7 @@ namespace KSP2SaveFix
             frameCounter = 0;
         }
 
-        public override void OnPostInitialized() { loaded = true; }
+        public override void OnPostInitialized() { loaded = true; } //loaded
 
         private void LateUpdate()
         {
