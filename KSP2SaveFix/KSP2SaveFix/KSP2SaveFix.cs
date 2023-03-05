@@ -5,13 +5,14 @@ using SpaceWarp.API.Game;
 using SpaceWarp.API.Assets;
 using SpaceWarp.API.UI.Appbar;
 using SpaceWarp;
-
+using KSP.game;
 using BepInEx;
 using KSP.UI.Binding;
 using KSP.Sim.impl;
 using UnityEngine;
 using System.Collections.Generic;
 using SpaceWarp.API.UI;
+using KSP.Game;
 
 namespace KSP2SaveFix
 {
@@ -86,10 +87,10 @@ namespace KSP2SaveFix
                 {
                     frameCounter = 0;
                     // So it doesn't start looking for vessels before we loaded a save
-                    if (!(Instance.Game.ViewController is null) && !(Instance.Game.ViewController.Universe is null))
+                    if (!(GameManager.Instance.Game.ViewController is null) && !(GameManager.Instance.Game.ViewController.Universe is null))
                     {
                         // Collect vessels
-                        List<VesselComponent> vessels = Instance.Game.ViewController.Universe.GetAllVessels();
+                        List<VesselComponent> vessels = GameManager.Instance.Game.ViewController.Universe.GetAllVessels();
                         for (int i = 0; i < vessels.Count; i++)
                         {
                             // Get the control owner part
