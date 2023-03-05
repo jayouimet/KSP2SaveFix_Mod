@@ -1,0 +1,13 @@
+{
+    "mod_id": "KSP2SaveFix",
+    "author": "jayouimet",
+    "name": "KSP 2 Save Fix",
+    "description": "Simple mod to fix the save and can't launch at VAB bugs. At least until they release a patch.",
+    "source": "https://github.com/jayouimet/KSP2SaveFix_Mod",
+    "version": "1.0.0",
+    "dependencies": [],
+    "ksp2_version": {
+        "min": "*",
+        "max": "*"
+    }
+}
