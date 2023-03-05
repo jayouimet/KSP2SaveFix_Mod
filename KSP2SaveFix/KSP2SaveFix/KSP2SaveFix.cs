@@ -1,18 +1,23 @@
 ﻿using SpaceWarp.API.Mods;
-using SpaceWarp.API.AssetBundles;
 using SpaceWarp.API;
+using SpaceWarp.UI;
+using SpaceWarp.API.Game;
+using SpaceWarp.API.Assets;
+using SpaceWarp.API.UI.Appbar;
+using SpaceWarp;
+
+using BepInEx;
 using KSP.UI.Binding;
 using KSP.Sim.impl;
 using UnityEngine;
 using System.Collections.Generic;
+using SpaceWarp.API.UI;
 
 namespace KSP2SaveFix
 {
-    [MainMod]
-    public class KSP2SaveFix : Mod
+    
+    public class KSP2SaveFix : BaseSpaceWarpPlugin
     {
-        public GUISkin _spaceWarpUISkin;
-
         private bool drawUI;
         private Rect windowRect;
         private bool loaded;
@@ -35,30 +40,20 @@ namespace KSP2SaveFix
 
             // Example of using the asset loader, were going to load the SpaceWarp GUI skin.
             // [FORMAT]: space_warp/[assetbundle_name]/[folder_in_assetbundle]/[file.type]
-            ResourceManager.TryGetAsset(
-                "space_warp/swconsoleui/swconsoleUI/spacewarpConsole.guiskin",
-                out _spaceWarpUISkin
-            );
+            GUI.skin = Skins.ConsoleSkin;
 
             // Register the mod's button on the SpaceWarp application bar.
-            SpaceWarpManager.RegisterAppButton(
-                "KSP2SaveFix",
-                "BTN-KSP2SaveFix",
-                SpaceWarpManager.LoadIcon(),
-                ToggleButton
-            );
         }
 
         private void ToggleButton(bool toggle)
         {
             drawUI = toggle;
-            GameObject.Find("BTN-KSP2SaveFix")?.GetComponent<UIValue_WriteBool_Toggle>()?.SetValue(toggle);
         }
 
         public void OnGUI()
         {
             // Set the GUI skin to the SpaceWarp GUI skin.
-            GUI.skin = _spaceWarpUISkin;
+            GUI.skin = Skins.ConsoleSkin;
 
             if (drawUI)
             {
@@ -98,13 +93,13 @@ namespace KSP2SaveFix
                         // If the control owner was null, we need to reset it to a command module
                         if (controlOwner is null)
                         {
-                            Logger.Info("Control 0wner not found for  " + vessels[i].GlobalId);
+                            Logger.LogInfo("Control 0wner not found for  " + vessels[i].GlobalId);
                             // Gather command modules
                             List<PartComponentModule_Command> partModules = vessels[i].SimulationObject.PartOwner.GetPartModules<PartComponentModule_Command>();
                             // Set ownership to the first command module
                             if (partModules.Count > 0)
                             {
-                                Logger.Info("Set control to " + partModules[0].Part.GlobalId);
+                                Logger.LogInfo("Set control to " + partModules[0].Part.GlobalId);
                                 vessels[i].SetControlOwner(partModules[0].Part);
                             }
                             else
@@ -112,7 +107,7 @@ namespace KSP2SaveFix
                                 // Otherwise try to set it to the root part, whatever it is
                                 if (vessels[i].SimulationObject.PartOwner != null)
                                 {
-                                    Logger.Info("Set control to " + vessels[i].SimulationObject.PartOwner.RootPart.GlobalId);
+                                    Logger.LogInfo("Set control to " + vessels[i].SimulationObject.PartOwner.RootPart.GlobalId);
                                     vessels[i].SetControlOwner(vessels[i].SimulationObject.PartOwner.RootPart);
                                 }
                             }
