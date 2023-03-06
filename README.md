@@ -1,3 +1,6 @@
+# DEPRECATED MOD!
+# Now part of https://github.com/Bit-Studios/CommunityFixes
+
 # KSP2SaveFix_Mod
 A mod that aims to fix the save game bug and the launch from VAB button not working.
 
